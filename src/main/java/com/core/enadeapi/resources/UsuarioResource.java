@@ -1,6 +1,7 @@
 package com.core.enadeapi.resources;
 
 
+import com.core.enadeapi.model.TbTipoUsuario;
 import com.core.enadeapi.model.TbUsuario;
 import com.core.enadeapi.model.dto.UsuarioDTO;
 import com.core.enadeapi.model.parameter.LoginParameter;
@@ -29,7 +30,9 @@ public class UsuarioResource {
 
     @RequestMapping(method=RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody TbUsuario obj) {
-
+        TbTipoUsuario tipoUsuario = new TbTipoUsuario();
+        tipoUsuario.setIdTipoUsuario(new Integer(1));
+        obj.setTbTipoUsuarioidTipoUsuario(tipoUsuario);
         obj = service.salvar(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getIdUsuario()).toUri();
