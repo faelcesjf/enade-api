@@ -1,0 +1,54 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+    ENADE   
+
+
+
+</ion-title>
+<ion-item> 
+  <ion-button (click)="getAlunosPendentes()" > Pendências </ion-button> 
+  <ion-button (click)="getAlunos()" > Todos </ion-button> 
+  <ion-button (click)="getAlunos()" > resultados </ion-button> 
+
+  
+
+
+</ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+  <ion-list no-lines>
+   
+
+    <ion-list-header>
+      <ion-label>Nome</ion-label>
+      <ion-label>Prova</ion-label>
+
+    </ion-list-header>
+
+    <ion-item *ngFor="let aluno of alunos">
+      <ion-label > {{aluno.nomeUsuario}} </ion-label>
+
+
+  </ion-item >
+    
+  
+   
+  </ion-list>
+  <ion-infinite-scroll threshold="100px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais alunos ... ">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>
